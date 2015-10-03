@@ -1,0 +1,9 @@
+FileCreateDir,%Install%
+  FileCreateDir,%Install%\ahk
+    FileInstall,ahk\css.ahk,%Install%\ahk\css.ahk,1
+    FileInstall,ahk\cst.ahk,%Install%\ahk\cst.ahk,1
+    FileInstall,ahk\hotkey_guis.ahk,%Install%\ahk\hotkey_guis.ahk,1
+    FileInstall,ahk\install.ahk,%Install%\ahk\install.ahk,1
+    FileInstall,ahk\var.ahk,%Install%\ahk\var.ahk,1
+  FileCreateDir,%Install%\img
+    FileInstall,img\icon.ico,%Install%\img\icon.ico,1

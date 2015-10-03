@@ -3,14 +3,15 @@
 #SingleInstance,Force
 SendMode,Input
 SetWorkingDir,%A_ScriptDir%
-
-Font=Segoe UI
-FontHotkey=CWhite S10 Q5 WBold
-FontHotkeyActive=CRed S10 Q5 WBold
-FontDesc=Font,CWhite S10 Q5 WNormal
-FontDescActive=Font,CRed S10 Q5 WNormal
-
+Version=1.0.0
+BGActive=A00
 BGColor=000
+Font=Segoe UI
+FontDesc=Font,CWhite S10 Q5 WNormal
+FontHotkey=CWhite S10 Q5 WBold
 GUIHidden=0
-PosX=% A_ScreenWidth-384
-PosY=% A_ScreenHeight-288
+Install=%A_MyDocuments%\cbd25b6a-697d-11e5-9d70-feff819cdc9f
+PosX=32
+PosY=32
+PosYH1=96
+PosYH2=134
