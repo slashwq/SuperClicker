@@ -4,8 +4,8 @@
 SendMode,Input
 SetWorkingDir,%A_ScriptDir%
 Version=1.0.0
-BGActive=A00
-BGColor=000
+BGActive=AA0000
+BGColor=000000
 Font=Segoe UI
 FontDesc=Font,CWhite S10 Q5 WNormal
 FontHotkey=CWhite S10 Q5 WBold
