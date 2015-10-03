@@ -3,22 +3,8 @@
 ; TITLE: SuperClicker
 ; UUID: cbd25b6a-697d-11e5-9d70-feff819cdc9f
 
-#NoEnv
-#Persistent
-#SingleInstance,Force
-SendMode,Input
-SetWorkingDir,%A_ScriptDir%
-
-Font=Segoe UI
-FontHotkey=CWhite S10 Q5 WBold
-FontHotkeyActive=CRed S10 Q5 WBold
-FontDesc=Font,CWhite S10 Q5 WNormal
-FontDescActive=Font,CRed S10 Q5 WNormal
-
-BGColor=000
-GUIHidden=0
-PosX=% A_ScreenWidth-384
-PosY=% A_ScreenHeight-288
+#Include ahk\var.ahk ; Defines all variables.
+; #Include ahk\install.ahk ; Installs all files.
 
 Legend:
 { Gui,Legend:Color,%BGColor%
@@ -30,17 +16,27 @@ Legend:
   Gui,Legend:Font,,
   Gui,Legend:Font,CWhite S10 Q5,Segoe UI
   Gui,Legend:Add,Text,X128 Y40,Hides/Shows the Legend
+  Gui,Legend:Show,X%PosX% Y%PosY% W384 H192,SuperClicker Legend
+  Gui,Legend:+AlwaysOnTop -Caption +LastFound +ToolWindow +0x08000000
+  WinSet,Transparent,128,SuperClicker Legend
   }
+  
 ; CTRL-SHIFT-T
-CTRLSHIFTT:
+#Include ahk\ctrl_shift_t.ahk
+  
+; CTRL-SHIFT-C
+CTRLSHIFTC:
 { Gui,Legend:Font,%FontHotkey%,%Font%
-  Gui,Legend:Add,Text,X8 Y64,CTRL+SHIFT+T
+  Gui,Legend:Add,Text,X8 Y88 vCTRLSHIFTC1,CTRL+SHIFT+C
   Gui,Legend:Font,%FontDesc%,%Font%
-  Gui,Legend:Add,Text,X128 Y64,This is a test combo!
+  Gui,Legend:Add,Text,X128 Y88 vCTRLSHIFTC2,AutoClick at a rate of 25/sec.
+  If CTRLSHIFTC=1
+  { Gui,Legend:Font,%FontHotkeyActive%,%Font%
+    Gui,Legend:Add,Text,X8 Y88 vCTRLSHIFTC1,CTRL+SHIFT+C
+    Gui,Legend:Font,%FontDescActive%,%Font%
+    Gui,Legend:Add,Text,X128 Y88 vCTRLSHIFTC2,AutoClick at a rate of 25/sec.
+    }
   }
-Gui,Legend:Show,X%PosX% Y%PosY% W384 H192,SuperClicker Legend
-Gui,Legend:+AlwaysOnTop +Border -Caption +ToolWindow
-WinSet,Transparent,128,SuperClicker Legend
 
 ^+H::
 { If GUIHidden=0
@@ -54,24 +50,10 @@ WinSet,Transparent,128,SuperClicker Legend
 	Return
 	}
   }
+ 
   
-^+T::
-{ If CTRLSHIFTT=0
-  { CTRLSHIFTT=1
-    Gui,Legend:Font,%FontHotkeyActive%,%Font%
-    Gui,Legend:Add,Text,X8 Y64,CTRL+SHIFT+T
-	Gui,Legend:Font,%FontDescActive%,%Font%
-    Gui,Legend:Add,Text,X128 Y64,This is a test combo!
-    Return
-  }
-  Else
-  { CTRLSHIFTT=0
-    Gosub,CTRLSHIFTT
-	Return
-	}
-  }
-  
-^+Q::ExitApp
+^+Q::
+!F4::ExitApp
 
 ^+C::
 { CTRLSHIFTC=1 
