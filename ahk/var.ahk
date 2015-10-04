@@ -3,7 +3,7 @@
 #SingleInstance,Force
 SendMode,Input
 SetWorkingDir,%A_ScriptDir%
-Version=1.0.0
+Version=1.1.0
 BGActive=AA0000
 BGColor=000000
 Font=Segoe UI
